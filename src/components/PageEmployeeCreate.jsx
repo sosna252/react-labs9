@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 class PageEmployeeCreate extends React.Component {
@@ -94,5 +95,17 @@ class PageEmployeeCreate extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    employee: {
+      name: state.name,
+      age: state.age,
+      email: state.email,
+      company: state.company
+    }
+  };
+};
 
-export default withRouter(PageEmployeeCreate);
+const mapDispatchToProps = dispatch => ({ });
+
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(PageEmployeeCreate)); 
