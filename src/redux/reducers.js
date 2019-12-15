@@ -15,8 +15,8 @@ const appReducer = (state = initialState, action) => {
     }
     case EMPLOYEE_ADD:{
       const { employee } = action.payload;
-      // CAREFUL: You can't modify state variable directly.
-      return Object.assign({}, state, { employee });
+      const newemployee=[...state.employees,employee]
+      return Object.assign({}, state, { employees: newemployee });
     }
     default:
       return state;
