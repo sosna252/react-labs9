@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class PageEmployeeCreate extends React.Component {
   constructor(props) {
@@ -13,13 +13,13 @@ class PageEmployeeCreate extends React.Component {
     this.createEmployee = this.createEmployee.bind(this);
 
     this.state = {
-      name: '',
+      name: "",
       age: 18,
-      company: '',
-      email: '',
+      company: "",
+      email: "",
       isSaving: false,
       error: null
-    }
+    };
   }
 
   nameChanged(e) {
@@ -40,13 +40,7 @@ class PageEmployeeCreate extends React.Component {
 
   createEmployee() {
     this.setState({ isSaving: true, error: null });
-    
-    const { 
-      name,
-      age, 
-      company, 
-      email,
-    } = this.state;
+    const {name,age,company,email} = this.state;
 
     const employee = { 
       id: Date.now(),
@@ -55,11 +49,11 @@ class PageEmployeeCreate extends React.Component {
       company, 
       email };
 
-    fetch('http://localhost:3004/employees', {
-      method: 'POST', 
+    fetch("http://localhost:3004/employees", {
+      method: "POST", 
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify(employee)
     })
