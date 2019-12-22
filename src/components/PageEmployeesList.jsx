@@ -26,6 +26,7 @@ class PageEmployeesList extends React.Component {
   render() {
     const { Loading } = this.props;
     const { employees } = this.props;
+    const { user } = this.props;
 
     if(Loading) {
       return <p>Loading ...</p>
@@ -33,6 +34,7 @@ class PageEmployeesList extends React.Component {
     
     return (
       <div>
+        <h1 style={{position:"absolute", right:"100px"}}>{user.full_name}</h1>
         <h1>Employees List:</h1>
         {employees && employees.map((employee => <EmployeeLine key={employee.id} employee={employee} />))}
         <Link to="/new">
@@ -47,7 +49,8 @@ const mapStateToProps = (state /*, ownProps */) => {
   return {
     employees: state.employees,
     Loading: state.loading,
-    fetchedData: state.fetchedData
+    fetchedData: state.fetchedData,
+    user:state.user
   }
 }
 

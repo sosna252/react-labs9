@@ -1,4 +1,4 @@
-import { EMPLOYEES_LOADED, EMPLOYEE_ADD, EMPLOYEES_LOADING, EMPLOYEES_LOADING_ERROR } from "./constants";
+import { EMPLOYEES_LOADED, EMPLOYEE_ADD, EMPLOYEES_LOADING, EMPLOYEES_LOADING_ERROR, LOGGING } from "./constants";
 
 export const initialState = {
   employees: [],
@@ -27,6 +27,10 @@ const appReducer = (state = initialState, action) => {
     case EMPLOYEES_LOADING_ERROR:{
       const {error}=action.payload;
       return Object.assign({},state, { loading:true, error});
+    }
+    case LOGGING:{
+      const user=action.payload;
+      return Object.assign({}, state, { user});
     }
     default:
       return state;

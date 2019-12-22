@@ -3,6 +3,7 @@ import {
   EMPLOYEE_ADD,
   EMPLOYEES_LOADING,
   EMPLOYEES_LOADING_ERROR,
+  LOGGING
 } from "./constants";
 export const employeesLoaded = (employees) => {
   return {
@@ -37,6 +38,14 @@ export const LoadingError = error => {
     }
   };
 };
+
+export const Logging=(login)=>{
+  return{
+    type: LOGGING,
+    payload: login
+  };
+}; 
+
 
 export const loadEmployees=()=>{
   return(dispatch)=>{
