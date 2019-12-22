@@ -40,7 +40,7 @@ export const LoadingError = error => {
 
 export const loadEmployees=()=>{
   return(dispatch)=>{
-    dispatch(loadEmployees())
+    dispatch(employeesLoading())
     fetch('http://localhost:3004/employees')
     .then((data) => data.json())
     .then(
