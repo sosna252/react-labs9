@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { employeesLoaded } from "../redux/actions";
+import { employeesLoaded, loadEmployees } from "../redux/actions";
 
 const EmployeeLine = ({ employee }) => (
 <div>{employee.name} ({employee.age} yrs old): {employee.company}</div>
@@ -33,10 +33,10 @@ class PageEmployeesList extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { Loading } = this.props;
     const { employees } = this.props;
 
-    if(isLoading) {
+    if(Loading) {
       return <p>Loading ...</p>
     }
     
@@ -55,13 +55,14 @@ class PageEmployeesList extends React.Component {
 const mapStateToProps = (state /*, ownProps */) => {
   return {
     employees: state.employees,
+    Loading: state.loading,
     fetchedData: state.fetchedData
-
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  employeesLoaded: employees => dispatch(employeesLoaded(employees))
+  employeesLoaded: employees => dispatch(employeesLoaded(employees)),
+  loadEmployees: ()=> dispatch(loadEmployees())
 })
 
 export default connect(
