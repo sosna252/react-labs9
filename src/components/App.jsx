@@ -14,6 +14,8 @@ import reduxLogger from 'redux-logger'
 
 import PageEmployeesList from "./PageEmployeesList";
 import PageEmployeeCreate from "./PageEmployeeCreate";
+import Login from "./Login";
+
 
 const store = createStore(rootReducer, {}, applyMiddleware(reduxLogger,reduxThunk))
 
@@ -22,6 +24,9 @@ const App = () => (
     <Router>
       <Switch>
         <Route exact path="/">
+          <Login/>
+        </Route>
+        <Route exact path="/list">
           <PageEmployeesList/>
         </Route>
         <Route exact path="/new">
